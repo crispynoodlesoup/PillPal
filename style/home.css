@@ -1,0 +1,48 @@
+.main-text {
+    text-align: center;
+    max-width: clamp(320px, 40vw, 540px);
+    margin: auto;
+}
+
+.row-plus-gap {
+    display: flex;
+    gap: 8px;
+}
+
+.exhibit {
+    margin: auto;
+    padding: 6px;
+}
+
+.exhibit-text {
+    text-align: center;
+    padding: 4px;
+}
+
+.img-wrap {
+    flex: 1;
+    position: relative;
+    max-width: clamp(160px, 20vw, 250px);
+}
+
+.creator-img {
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+.creator-text {
+    max-width: clamp(160px, 20vw, 250px);
+    height: clamp(160px, 20vw, 250px);
+    bottom: 0;
+    position: absolute;
+    padding: 8px;
+    background-color: rgba(0, 0, 0, 0.541);
+    opacity: 0;
+    transition: all 0.5s;
+    color: white;
+}
+
+.creator-text:hover {
+    opacity: 100%;
+}
