@@ -1,32 +1,86 @@
-main {
-    padding: 8px min(10vw, 200px) 32px;
+body {
+   display: grid;
+   grid-template-columns: 320px 1fr;
+   grid-template-rows: 96px 1fr;
 }
 
-.content {
-    width: 100%;
-    height: 100%;
+aside {
+    text-align: center;
+    padding: 24px;
+    grid-row: 1/3;
+    background-color: #ffa784;
+}
+
+aside h1 a {
+    color: white;
+    font-size: 48px;
+}
+
+aside ul {
+    margin-top: 32px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 2fr 3fr;
-    gap: 32px;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 48px;
+    
 }
 
-.schedule {
-    background-image: linear-gradient(to right bottom, #ffa582, #ffae8d, #ffb799, #ffbfa5, #ffc8b1);
-    background-color: lightsalmon;
-    grid-row: 1/-1;
-    border-radius: 32px;
+li {
+    display: block;
 }
 
-.care-messages {
-    background-image: linear-gradient(to right top, #e4e4e4, #dfdfdf, #dbdbdb, #d6d6d6, #d2d2d2);
-    background-color: #ededed;
-    border-radius: 32px;
+li a {
+    color: #7e3f00;
+    font-size: 24px;
+    transition: all 0.3s;
 }
 
-.prescriptions {
-    background-image: linear-gradient(to left top, #97dcf8, #a0e0fa, #a9e4fb, #b1e7fd, #baebff);
-    background-color: skyblue;
-    border-radius: 32px;
+li a:hover {
+    color: black;
+    font-size: 25px;
 }
 
+header {
+    box-shadow: inset 10px 0 10px -10px rgb(114, 114, 114);
+    padding: 24px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header h1 {
+    color: #074b66;
+    font-weight: 500;
+}
+
+.account-button {
+    border-radius: 8px;
+    background-color: white;
+    padding: 12px;
+    border: 2px solid light;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid grey;
+}
+
+.account-button p {
+
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.account-button img {
+    display: block;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #dddddd;
+    filter: opacity(0.4);
+}
+
+main {
+    box-shadow: inset 0 10px 10px -10px rgb(114, 114, 114), inset 10px 0 10px -10px black;
+    background-color: rgb(232, 249, 255);
+}
