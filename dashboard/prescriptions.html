@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/dashboard.css">
     <link rel="stylesheet" href="../style/prescriptions.css">
-    <script src="../scripts/prescriptions.js" defer></script>
+    <script type="module" src="../scripts/objects.js" defer></script>
+    <script type="module" src="../scripts/prescriptions.js" defer></script>
 </head>
 
 <body>
@@ -53,7 +54,10 @@
                 <option value="injection">Injection</option>
             </select>
 
+            <div class="button-row">
+            <button class="cancel">Cancel</button>
             <button class="submit" type="button">Submit</button>
+        </div>
         </div>
     </div>
 </body>
