@@ -1,0 +1,60 @@
+/* Generic styles for demo page */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, div {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  background-color: #fafafa;
+  font-size: 16px;
+}
+
+body, div, span, input, select, p {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+body > .wrapper {
+  flex-direction: column;
+}
+
+.container {
+  width: 50%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 14px;
+}
+
+body > .wrapper > .container {
+  width: 100%;
+  max-width: unset;
+  margin-bottom: 80px;
+}
+
+#dropdownSelected > span:first-of-type {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 4px;
+}

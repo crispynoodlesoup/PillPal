@@ -9,9 +9,11 @@
     <title>hackathon!</title>
     <link rel="stylesheet" href="./style/style.css">
     <link rel="stylesheet" href="./style/login.css">
+    <link rel="stylesheet" type="text/css" href="./style/dropdown.css">
     <script src="./scripts/script.js" defer></script>
     <script src="./echarts.js"></script>
     <script src="./ecStat.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />    <!-- <script src="./scripts/jquery-3.6.4.js"></script> -->
 </head>
 
 <body>
@@ -25,10 +27,13 @@
         </ul>
     </nav>
     <main>
-        <form>
+        <form id="myForm">
             <legend>User Login</legend>
             <input type="text" id="name" name="name" placeholder="Full Name" required>
             <input type="email" id="email" name="email" placeholder="Email" required>
+            <select class="js-example-basic-multiple js-states form-control" id="medication" name="medication" multiple style="width: 100%;"></select>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
             <button type="submit">Sign Up</button>
         </form>
     </main>
@@ -36,6 +41,63 @@
         <div class="footer-line"></div>
         <p><strong>Credit of Rafael Padilla and Peyton Barre</strong></p>
     </footer>
-</body>
+    
+    <script>
+        $('#myForm').on('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+            let myMedication = [];
+            $('#medication').select2('data').forEach(bleh => {
+              myMedication.push(bleh.text)
+            })
+            // Get form data
+            let formData = {
+                name: $('#name').val(),
+                email: $('#email').val(),
+                medication: myMedication
+            };
+            
+            // Send form data to server-side script using AJAX
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:5000/submit', // Replace with URL of server-side script that handles form submission
+                data: formData,
+                success: function(response) {
+                    console.log(response); // Handle success response from server
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(errorThrown); // Handle error response from server
+                }
+            });
+        });
 
+        // Initialize Select2
+        $('#medication').select2({
+          placeholder: 'Select medication',
+          allowClear: true,
+          tags: true,
+          tokenSeparators: [',', ' '],
+          createTag: function (params) {
+            var term = $.trim(params.term);
+            if (term === '') {
+              return null;
+            }
+            return {
+              id: term,
+              text: term,
+              newOption: true
+            }
+          }
+        });
+    
+        // Populate dropdown with medical drugs data
+        $.getJSON('https://raw.githubusercontent.com/dariusk/corpora/master/data/medicine/drugs.json', function (data) {
+          $('#medication').append(data.drugs.map(function (drug) {
+            return $('<option>', {
+              value: drug,
+              text: drug
+            });
+          }));
+        });
+      </script>
+</body>
 </html>
