@@ -33,11 +33,22 @@ const makePrescription = (drugName, dosage, timesDaily, daysPerDose, description
     };
 }
 
-let prescriptions = [
-    makePrescription("Codiene", "2 pills", 3, 1, "Two pills in the morning, two during lunch, and two before bed"),
-    makePrescription("Moxafloxacin", "2 drops", 1, 2, "Every other day, put in two eye drops in the morning"),
-    makePrescription("Trulicity", "1 shot", 1, 5, "Once every 5 days, take an insulin shot to the arm"),
-];
+let prescriptions = []
+fetch('/prescriptions')
+  .then(response => response.json())
+  .then(data => {
+    prescriptions = data.prescriptions;
+    prescriptions.forEach(prescription => {
+        makePrescription(prescription, "2 pills", 3, 1, "Two pills in the morning, two during lunch, and two before bed")
+    })
+    console.log(prescriptions)
+  })
+  .catch(error => console.error(error));
+// let prescriptions = [
+//     makePrescription("database name", "2 pills", 3, 1, "Two pills in the morning, two during lunch, and two before bed"),
+//     makePrescription("database name", "2 drops", 1, 2, "Every other day, put in two eye drops in the morning"),
+//     makePrescription("database name", "1 shot", 1, 5, "Once every 5 days, take an insulin shot to the arm"),
+// ];
 
 // add each day of the week to schedule
 const schedule = document.querySelector(".week-schedule");
