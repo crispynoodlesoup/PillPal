@@ -20,11 +20,11 @@
         <ul>
             <li><a href="./schedule.html">Schedule</a></li>
             <li><a href="./prescriptions.html">Prescriptions</a></li>
-            <li><a href="">Contact Care</a></li>
+            <li><a href="./contact.html">Contact Care</a></li>
         </ul>
         <ul>
-            <li><a href="">Settings</a></li>
-            <li><a href="">Terms of Service</a></li>
+            <li><a href="./dashboard.html">Settings</a></li>
+            <li><a href="./dashboard.html">Terms of Service</a></li>
         </ul>
     </aside>
     <header>
@@ -48,11 +48,8 @@
         <div class="modal-content"> 
             <h3>New Prescription</h3>
             <input type="text" placeholder="Drug Name">
-            <select name="type" id="">
-                <option value="pill">Pill</option>
-                <option value="drops">Drops</option>
-                <option value="injection">Injection</option>
-            </select>
+            <input type="number" placeholder="Dosage" min="1">
+            <input type="number" placeholder="Days between doses" min="0">
 
             <div class="button-row">
             <button class="cancel">Cancel</button>
