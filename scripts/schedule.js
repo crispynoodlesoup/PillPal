@@ -1,3 +1,7 @@
+
+fetch('/prescriptions')
+  .then(response => response.json())
+  .then(data => {
 // day getting func
 function dayToWeekday(dayNum) {
     switch(dayNum) {
@@ -33,22 +37,12 @@ const makePrescription = (drugName, dosage, timesDaily, daysPerDose, description
     };
 }
 
-let prescriptions = []
-fetch('/prescriptions')
-  .then(response => response.json())
-  .then(data => {
-    prescriptions = data.prescriptions;
-    prescriptions.forEach(prescription => {
-        makePrescription(prescription, "2 pills", 3, 1, "Two pills in the morning, two during lunch, and two before bed")
-    })
-    console.log(prescriptions)
-  })
-  .catch(error => console.error(error));
-// let prescriptions = [
-//     makePrescription("database name", "2 pills", 3, 1, "Two pills in the morning, two during lunch, and two before bed"),
-//     makePrescription("database name", "2 drops", 1, 2, "Every other day, put in two eye drops in the morning"),
-//     makePrescription("database name", "1 shot", 1, 5, "Once every 5 days, take an insulin shot to the arm"),
-// ];
+    let prescriptions = []
+    const prescriptionNamesAlmost = JSON.stringify(data.prescriptions);
+    const prescriptionNames = prescriptionNamesAlmost.replace(/[{}]/g, '').split(',');
+    prescriptionNames.forEach(name => {
+        prescriptions.push(makePrescription(name.trim(), "2 pills", 3, 1, "Two pills in the morning, two during lunch, and two before bed"));
+    });
 
 // add each day of the week to schedule
 const schedule = document.querySelector(".week-schedule");
@@ -114,16 +108,13 @@ popup.style.display = 'none';
 document.addEventListener('click', function(event) {
   if (event.target.classList.contains('drug')) {
     event.preventDefault();
-
-    // Show the popup
     popup.style.display = 'block';
   }
 });
-
-// Add a click event listener to the close button
 document.querySelector('.popup .close').addEventListener('click', function(event) {
-
-  // Hide the popup
   popup.style.display = 'none';
 });
 
+
+})
+.catch(error => console.error(error));
