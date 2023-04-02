@@ -12,14 +12,21 @@ main {
 }
 
 .schedule {
+    background-image: linear-gradient(to right bottom, #ffa582, #ffae8d, #ffb799, #ffbfa5, #ffc8b1);
     background-color: lightsalmon;
     grid-row: 1/-1;
+    border-radius: 32px;
 }
 
 .care-messages {
-    background-color: skyblue;
+    background-image: linear-gradient(to right top, #e4e4e4, #dfdfdf, #dbdbdb, #d6d6d6, #d2d2d2);
+    background-color: #ededed;
+    border-radius: 32px;
 }
 
 .prescriptions {
-    background-color: lightblue;
+    background-image: linear-gradient(to left top, #97dcf8, #a0e0fa, #a9e4fb, #b1e7fd, #baebff);
+    background-color: skyblue;
+    border-radius: 32px;
 }
+

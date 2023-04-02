@@ -1,7 +1,7 @@
 :root {
     --primary: white; /*464646*/
     --secondary: #bbbbbb;
-    --accent: #ffa600;
+    --accent: lightsalmon;
     --text-color: black;
     --border-color: #888888;
 }
@@ -74,11 +74,11 @@ nav {
 }
 
 .orange {
-    color: #ffa600;
+    color: lightsalmon;
 }
 
 .blue {
-    color: #00b7ff;
+    color: skyblue;
 }
 
 main {
