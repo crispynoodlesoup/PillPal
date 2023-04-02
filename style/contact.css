@@ -1,0 +1,21 @@
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: start;
+}
+
+.ya {
+    background-color: white;
+    padding: 16px;
+    
+    box-shadow: 2px 2px 4px #465257;
+    width: 80%;
+}
+
+.cont {
+    text-align: center;
+    display: grid;
+    gap: 8px;
+    grid-template-columns: 1fr;
+}
