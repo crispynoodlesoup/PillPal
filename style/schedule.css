@@ -136,3 +136,19 @@ main h1 {
       width: 70%;
     }
 }
+
+.left {
+    height: 100%;
+    width: 100%;
+
+}
+
+.today-meds {
+    margin-top: 16px;
+}
+
+.medicine-card {
+    padding: 20px;
+    background-color: white;
+    box-shadow: 2px 2px 4px #465257;
+}

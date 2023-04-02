@@ -95,6 +95,20 @@ function addDrugToDrugList(drugList, drugName, dosage, timesDaily) {
     }
 });
 
+let todayMeds = document.querySelector(".today-meds");
+
+prescriptions.forEach(p => {
+    let card = document.createElement("div");
+    card.className = "medicine-card";
+    let title = document.createElement("h3");
+    title.innerText = p.drugName;
+    let description = document.createElement("p");
+    description.innerText = p.description;
+    card.appendChild(title);
+    card.appendChild(description);
+    todayMeds.appendChild(card);
+});
+
 const popup = document.querySelector('#popup1');
 popup.style.display = 'none';
 document.addEventListener('click', function(event) {
