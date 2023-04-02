@@ -41,6 +41,7 @@ for(let i = 0; i < 7; i++) {
 function addDrug(drugList, drugName, dosage, times) {
     const drug = document.createElement("div");
     drug.className = "drug";
+    drug.setAttribute("href", "#popup1");
 
     let text = "";
     if(times !== 1) {
@@ -75,4 +76,22 @@ function addDrug(drugList, drugName, dosage, times) {
         nothing.innerText = "nothing";
         day.children[1].appendChild(nothing);
     }
+});
+
+const popup = document.querySelector('#popup1');
+popup.style.display = 'none';
+document.addEventListener('click', function(event) {
+  if (event.target.classList.contains('drug')) {
+    event.preventDefault();
+
+    // Show the popup
+    popup.style.display = 'block';
+  }
+});
+
+// Add a click event listener to the close button
+document.querySelector('.popup .close').addEventListener('click', function(event) {
+
+  // Hide the popup
+  popup.style.display = 'none';
 });
