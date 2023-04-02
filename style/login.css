@@ -3,8 +3,8 @@ main {
     place-content: center;
 }
 
-form {
-    max-width: 400px;
+#myForm {
+    width: 320px;
 }
 
 legend {
@@ -14,7 +14,7 @@ legend {
 }
 
 input[type="text"], input[type="email"] {
-    margin-top: 32px;
+    margin-top: 6px;
     width: 100%;
     font-size: 16px;
     outline: none;
@@ -33,7 +33,7 @@ input:user-invalid {
 }
 
 button[type="submit"] {
-    margin-top: 32px;
+    margin-top: 6px;
     width: 100%;
     font-size: 16px;
     padding: 16px;
