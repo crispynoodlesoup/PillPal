@@ -1,0 +1,9 @@
+main h1 {
+    color: #074b66;
+}
+
+.schedule {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    justify-content: center;
+}
