@@ -7,21 +7,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PillPal - Schedule for {{ name }}</title>
-    <link rel="stylesheet" href="../style/style.css">
-    <link rel="stylesheet" href="../style/dashboard.css">
-    <link rel="stylesheet" href="../style/schedule.css">
-    <script src="../scripts/schedule.js" defer></script>
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <link rel="stylesheet" href="../../static/style/style.css">
+    <link rel="stylesheet" href="../../static/style/dashboard.css">
+    <link rel="stylesheet" href="../../static/style/schedule.css">
+    <script src="../../static/scripts/schedule.js" defer></script>
 </head>
 
 <body>
     <aside>
         <h1><a href="../index.html">PillPal</a></h1>
         <ul>
-            <li><a href="./schedule.html">Schedule</a></li>
-            <li><a href="./prescriptions.html">Prescriptions</a></li>
+            <li><a href="">Schedule</a></li>
+            <li><a href="" id="prescriptionlink">Prescriptions</a></li>
             <li><a href="">Contact Care</a></li>
         </ul>
+        <script>
+            $(document).ready(function () {
+                $('#prescriptionlink').click(function() {
+                    $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost:5000/dashboard/prescriptions.html', // Replace with URL of server-side script that handles form submission
+                    success: function(response) {
+                        console.log(response); // Handle success response from server
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log(errorThrown); // Handle error response from server
+                    }
+                });
+                })
+            });
+        </script>
         <ul>
             <li><a href="">Settings</a></li>
             <li><a href="">Terms of Service</a></li>
@@ -30,8 +45,8 @@
     <header>
         <h1>Welcome Back {{ name }}!</h1>
         <div class="account-button">
-            <img src="../assets/account.svg" alt="user icon">
-            <p>Name</p>
+            <img src="../../static/assets/account.svg" alt="user icon">
+            <p>{{ name }}</p>
         </div>
     </header>
     <main>
@@ -42,30 +57,11 @@
         <div class="left">
             <h1>Today's Medications</h1>
             <div class="today-meds">
-
+                
             </div>
         </div>
     </main>
 </body>
-<script type="text/javascript">
-    function sendEmail() {
-      Email.send({
-        Host: "smtp.gmail.com",
-        Username: "pillpalworks@gmail.com",
-        Password: "pillpaltest",
-        To: 'receiver@email_address.com',
-        From: "pillpalworks@gmail.com",
-        Subject: "Medicine just taken",
-        Body: "The PillPal user has just taken their medication.",
-      })
-        .then(function (message) {
-          alert("mail sent successfully")
-        });
-    }
-  </script>
-<form method="post">
-    <input type="button" value="send email" onclick="sendEmail()">
-</form>
 <div id = "popup1" class="overlay">
     <div class="popup">
         <h2>Medicine Name</h2>
