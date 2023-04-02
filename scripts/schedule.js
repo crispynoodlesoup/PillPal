@@ -23,6 +23,22 @@ function weekdayToDay(dayNum) {
     }
 }
 
+const makePrescription = (drugName, dosage, timesDaily, daysPerDose, description) => {
+    return {
+        drugName,
+        dosage,
+        timesDaily,
+        daysPerDose,
+        description,
+    };
+}
+
+let prescriptions = [
+    makePrescription("Codiene", "2 pills", 3, 1, "Two pills in the morning, two during lunch, and two before bed"),
+    makePrescription("Moxafloxacin", "2 drops", 1, 2, "Every other day, put in two eye drops in the morning"),
+    makePrescription("Trulicity", "1 shot", 1, 5, "Once every 5 days, take an insulin shot to the arm"),
+];
+
 // add each day of the week to schedule
 const schedule = document.querySelector(".week-schedule");
 let dateObj = new Date();
@@ -38,36 +54,26 @@ for(let i = 0; i < 7; i++) {
     schedule.appendChild(day);
 }
 
-function addDrug(drugList, drugName, dosage, times) {
+function addDrugToDrugList(drugList, drugName, dosage, timesDaily) {
     const drug = document.createElement("div");
     drug.className = "drug";
 
     let text = "";
-    if(times !== 1) {
-        text = `${dosage}mg ${drugName} ${times}x`;
+    if(timesDaily !== 1) {
+        text = `${dosage} of ${drugName}, ${timesDaily}x`;
     } else {
-        text = `${dosage}mg ${drugName}`;
+        text = `${dosage} of ${drugName}`;
     }
     drug.innerText = text;
     drugList.appendChild(drug);
 }
 
 [...schedule.children].forEach(day => {
-    if(weekdayToDay(day.children[0].innerText) % 2 === 0) {
-        addDrug(day.children[1], "Codiene", 4, 3);
-    }
-    
-    if((weekdayToDay(day.children[0].innerText) + 1) % 3 === 0) {
-        addDrug(day.children[1], "Tylenol", 40, 1);
-    }
-    
-    if((weekdayToDay(day.children[0].innerText)) % 3 === 0) {
-        addDrug(day.children[1], "wads", 40, 1);
-    }
-    
-    if((weekdayToDay(day.children[0].innerText) + 1) % 1 === 0) {
-        addDrug(day.children[1], "ikb", 40, 1);
-    }
+    prescriptions.forEach(p => {
+        if(weekdayToDay(day.children[0].innerText) % p.daysPerDose === 0) {
+            addDrugToDrugList(day.children[1], p.drugName, p.dosage, p.timesDaily);
+        }
+    });
 
     if([...day.children[1].children].length === 0) {
         const nothing = document.createElement("p");
@@ -76,3 +82,4 @@ function addDrug(drugList, drugName, dosage, times) {
         day.children[1].appendChild(nothing);
     }
 });
+
