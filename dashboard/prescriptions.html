@@ -9,6 +9,8 @@
     <title>hackathon!</title>
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/dashboard.css">
+    <link rel="stylesheet" href="../style/prescriptions.css">
+    <script src="../scripts/prescriptions.js" defer></script>
 </head>
 
 <body>
@@ -25,13 +27,35 @@
         </ul>
     </aside>
     <header>
-        <h1>Welcome Back Rafael!</h1>
+        <h1>Edit your prescriptions!</h1>
         <div class="account-button">
             <img src="../assets/account.svg" alt="user icon">
             <p>Rafael Padilla</p>
         </div>
     </header>
-    <main></main>
+    <main>
+        <div class="prescriptions-head">
+            <h1>Your Prescriptions</h1>
+            <button class="add-drug">+ Prescription</button>
+        </div>
+        <div class="prescription-cards">
+
+        </div>
+    </main>
+
+    <div class="modal">
+        <div class="modal-content"> 
+            <h3>New Prescription</h3>
+            <input type="text" placeholder="Drug Name">
+            <select name="type" id="">
+                <option value="pill">Pill</option>
+                <option value="drops">Drops</option>
+                <option value="injection">Injection</option>
+            </select>
+
+            <button type="button">Submit</button>
+        </div>
+    </div>
 </body>
 
 </html>
