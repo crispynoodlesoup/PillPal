@@ -34,7 +34,7 @@ const makePrescription = (drugName, dosage, timesDaily, daysPerDose, description
 }
 
 let prescriptions = [
-    makePrescription("Codiene", "2 pills", 3, 1, "Two pills in the morning, two during lunch, and two before bed"),
+    makePrescription("Codiene", "2 pills", 3, 1, "Two pills in the morning, two during lunch, and two before bed, and this is just to make sure I can write an extra detailed description without the page breaking"),
     makePrescription("Moxafloxacin", "2 drops", 1, 2, "Every other day, put in two eye drops in the morning"),
     makePrescription("Trulicity", "1 shot", 1, 5, "Once every 5 days, take an insulin shot to the arm"),
 ];
@@ -82,6 +82,20 @@ function addDrugToDrugList(drugList, drugName, dosage, timesDaily) {
         nothing.innerText = "nothing";
         day.children[1].appendChild(nothing);
     }
+});
+
+let todayMeds = document.querySelector(".today-meds");
+
+prescriptions.forEach(p => {
+    let card = document.createElement("div");
+    card.className = "medicine-card";
+    let title = document.createElement("h3");
+    title.innerText = p.drugName;
+    let description = document.createElement("p");
+    description.innerText = p.description;
+    card.appendChild(title);
+    card.appendChild(description);
+    todayMeds.appendChild(card);
 });
 
 const popup = document.querySelector('#popup1');
