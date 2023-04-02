@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../style/dashboard.css">
     <link rel="stylesheet" href="../style/schedule.css">
     <script src="../scripts/schedule.js" defer></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
 
 <body>
@@ -46,6 +47,25 @@
         </div>
     </main>
 </body>
+<script type="text/javascript">
+    function sendEmail() {
+      Email.send({
+        Host: "smtp.gmail.com",
+        Username: "pillpalworks@gmail.com",
+        Password: "pillpaltest",
+        To: 'receiver@email_address.com',
+        From: "pillpalworks@gmail.com",
+        Subject: "Medicine just taken",
+        Body: "The PillPal user has just taken their medication.",
+      })
+        .then(function (message) {
+          alert("mail sent successfully")
+        });
+    }
+  </script>
+<form method="post">
+    <input type="button" value="send email" onclick="sendEmail()">
+</form>
 <div id = "popup1" class="overlay">
     <div class="popup">
         <h2>Medicine Name</h2>
